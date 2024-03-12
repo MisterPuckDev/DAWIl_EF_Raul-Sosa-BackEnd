@@ -45,6 +45,23 @@ public class TicketController {
     @ResponseBody
     public ResponseEntity<Map<String, Object>> add(@RequestBody Ticket obj) {
         Map<String, Object> salida = new HashMap<>();
+
+        try {
+            obj.setId(0);
+            Ticket objTicket = ticketService.add(obj);
+
+            if (objTicket == null) {
+                salida.put("mensaje", "Ocurrio un error al intentar registrar");
+            } else {
+                salida.put("mensaje", "Registro con exito");
+            }
+
+        } catch (Exception e) {
+            salida.put("mensaje", "Ocurrio un error durante el registro: " + e.getMessage());
+            System.out.println("Ocurrio un error durante el registro: " + e.getMessage());
+            return ResponseEntity.internalServerError().body(salida);
+        }
+
         return ResponseEntity.ok(salida);
     }
 
@@ -52,6 +69,22 @@ public class TicketController {
     @ResponseBody
     public ResponseEntity<Map<String, Object>> update(@RequestBody Ticket obj) {
         Map<String, Object> salida = new HashMap<>();
+
+        try {
+            Ticket objTicket = ticketService.update(obj);
+
+            if (objTicket == null) {
+                salida.put("mensaje", "Ocurrio un error al intentar actualizar");
+            } else {
+                salida.put("mensaje", "Actualizacion con exito");
+            }
+
+        } catch (Exception e) {
+            salida.put("mensaje", "Ocurrio un error durante la actualizacion: " + e.getMessage());
+            System.out.println("Ocurrio un error durante la actualizacion: " + e.getMessage());
+            return ResponseEntity.internalServerError().body(salida);
+        }
+
         return ResponseEntity.ok(salida);
     }
 
@@ -59,6 +92,16 @@ public class TicketController {
     @ResponseBody
     public ResponseEntity<Map<String, Object>> delete(@PathVariable("id") int id) {
         Map<String, Object> salida = new HashMap<>();
+
+        try {
+            ticketService.delete(id);
+            salida.put("mensaje", "Eliminacion con exito");
+        } catch (Exception e) {
+            salida.put("mensaje", "Ocurrio un error durante la eliminacion: " + e.getMessage());
+            System.out.println("Ocurrio un error durante la eliminacion: " + e.getMessage());
+            return ResponseEntity.internalServerError().body(salida);
+        }
+
         return ResponseEntity.ok(salida);
     }
 

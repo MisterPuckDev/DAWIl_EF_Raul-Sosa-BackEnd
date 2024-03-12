@@ -14,6 +14,6 @@ public interface TicketService {
 
     public Ticket update(Ticket obj);
 
-    public Ticket delete(int id);
+    public void delete(int id);
     
 }

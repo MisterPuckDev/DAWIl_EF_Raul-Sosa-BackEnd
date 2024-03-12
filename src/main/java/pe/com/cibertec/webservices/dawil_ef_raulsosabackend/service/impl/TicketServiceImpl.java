@@ -1,16 +1,22 @@
 package pe.com.cibertec.webservices.dawil_ef_raulsosabackend.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.com.cibertec.webservices.dawil_ef_raulsosabackend.model.Ticket;
+import pe.com.cibertec.webservices.dawil_ef_raulsosabackend.repository.TicketRepository;
 import pe.com.cibertec.webservices.dawil_ef_raulsosabackend.service.TicketService;
 
 import java.util.List;
 
 @Service
 public class TicketServiceImpl implements TicketService {
+
+    @Autowired
+    TicketRepository ticketRepository;
+
     @Override
     public List<Ticket> list() {
-        return null;
+        return ticketRepository.findAll();
     }
 
     @Override
@@ -20,16 +26,16 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public Ticket add(Ticket obj) {
-        return null;
+        return ticketRepository.save(obj);
     }
 
     @Override
     public Ticket update(Ticket obj) {
-        return null;
+        return ticketRepository.save(obj);
     }
 
     @Override
-    public Ticket delete(int id) {
-        return null;
+    public void delete(int id) {
+        ticketRepository.deleteById(id);
     }
 }

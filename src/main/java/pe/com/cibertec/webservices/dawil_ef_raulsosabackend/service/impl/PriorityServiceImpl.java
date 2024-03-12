@@ -1,16 +1,22 @@
 package pe.com.cibertec.webservices.dawil_ef_raulsosabackend.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.com.cibertec.webservices.dawil_ef_raulsosabackend.model.Priority;
+import pe.com.cibertec.webservices.dawil_ef_raulsosabackend.repository.PriorityRepository;
 import pe.com.cibertec.webservices.dawil_ef_raulsosabackend.service.PriorityService;
 
 import java.util.List;
 
 @Service
 public class PriorityServiceImpl implements PriorityService {
+
+    @Autowired
+    PriorityRepository priorityRepository;
+
     @Override
     public List<Priority> list() {
-        return null;
+        return priorityRepository.findAll();
     }
 
     @Override

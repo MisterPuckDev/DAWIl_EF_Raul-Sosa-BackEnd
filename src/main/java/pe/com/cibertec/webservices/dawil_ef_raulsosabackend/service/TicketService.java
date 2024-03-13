@@ -3,12 +3,13 @@ package pe.com.cibertec.webservices.dawil_ef_raulsosabackend.service;
 import pe.com.cibertec.webservices.dawil_ef_raulsosabackend.model.Ticket;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface TicketService {
 
     public List<Ticket> list();
 
-    public Ticket serachById(int id);
+    public Optional<Ticket> serachById(int id);
 
     public Ticket add(Ticket obj);
 

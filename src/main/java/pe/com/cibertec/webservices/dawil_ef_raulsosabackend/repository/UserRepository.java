@@ -12,7 +12,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     Optional<User> findByUsername(String username);
 
-    @Query("SELECT u.username" +
+    @Query("SELECT u.id, u.username, u.name, u.lastname, u.email, u.password, u.isActive, u.kind" +
             " FROM User u" +
             " INNER JOIN Ticket t" +
             " ON u.id = t.user.id" +

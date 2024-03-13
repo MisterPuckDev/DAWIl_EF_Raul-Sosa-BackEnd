@@ -35,8 +35,6 @@ public class Ticket {
     @JoinColumn(name="user_id")
     private User user;
 
-    private int asignedId;
-
     @ManyToOne
     @JoinColumn(name="project_id")
     private Project project;

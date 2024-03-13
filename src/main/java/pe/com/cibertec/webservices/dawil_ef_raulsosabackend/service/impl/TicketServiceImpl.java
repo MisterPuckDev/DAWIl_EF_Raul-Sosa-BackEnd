@@ -7,6 +7,7 @@ import pe.com.cibertec.webservices.dawil_ef_raulsosabackend.repository.TicketRep
 import pe.com.cibertec.webservices.dawil_ef_raulsosabackend.service.TicketService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TicketServiceImpl implements TicketService {
@@ -20,8 +21,8 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
-    public Ticket serachById(int id) {
-        return null;
+    public Optional<Ticket> serachById(int id) {
+        return ticketRepository.findById(id);
     }
 
     @Override

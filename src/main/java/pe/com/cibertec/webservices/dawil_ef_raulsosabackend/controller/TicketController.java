@@ -9,6 +9,7 @@ import pe.com.cibertec.webservices.dawil_ef_raulsosabackend.service.TicketServic
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/ticket")
@@ -27,8 +28,8 @@ public class TicketController {
 
     @GetMapping("/search/{id}")
     @ResponseBody
-    public ResponseEntity<Ticket> search(@PathVariable("id") int id) {
-        Ticket ticket = null;
+    public ResponseEntity<Optional<Ticket>> search(@PathVariable("id") int id) {
+        Optional<Ticket> ticket = null;
 
         try {
             ticket = ticketService.serachById(id);
@@ -47,7 +48,6 @@ public class TicketController {
         Map<String, Object> salida = new HashMap<>();
 
         try {
-            obj.setId(0);
             Ticket objTicket = ticketService.add(obj);
 
             if (objTicket == null) {

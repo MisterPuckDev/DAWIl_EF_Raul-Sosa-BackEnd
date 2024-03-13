@@ -31,15 +31,15 @@ public class UserServiceImpl implements UserService {
         List<Object[]> listReport = userRepository.getReportUserForCategory(id);
         List<ReportUserForCategory> finalList = new ArrayList<>();
         for (Object[] row : listReport) {
-            ReportUserForCategory reportObj = new ReportUserForCategory();
-            reportObj.setId((Integer) row[0]);
-            reportObj.setUsername((String) row[1]);
-            reportObj.setName((String) row[2]);
-            reportObj.setLastname((String) row[3]);
-            reportObj.setEmail((String) row[4]);
-            reportObj.setPassword((String) row[5]);
-            reportObj.setIsActive((Integer) row[6]);
-            reportObj.setKind((Integer) row[7]);
+            Integer idReporte = (Integer) row[0];
+            String username = (String) row[1];
+            String name = (String) row[2];
+            String lastUName = (String) row[3];
+            String email = (String) row[4];
+            String password = (String) row[5];
+            Integer state = (Integer) row[6];
+            Integer kind = (Integer) row[7];
+            ReportUserForCategory reportObj = new ReportUserForCategory(idReporte, username, name, lastUName, email, password, state, kind);
             finalList.add(reportObj);
         }
         return finalList;
